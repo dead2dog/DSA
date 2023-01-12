@@ -10,7 +10,7 @@ int val;
 };
 class Solution {
 public:
-    ListNode* removeElements(ListNode* head, int val) {
+    ListNode* removeElements1(ListNode* head, int val) {
         // 删除头结点
         while (head != NULL && head->val == val) { // 注意这里不是if
             ListNode* tmp = head;
@@ -29,6 +29,28 @@ public:
                 cur = cur->next;
             }
         }
+        return head;
+    }
+
+    ListNode* removeElements2(ListNode* head, int val) {
+        // 声明一个虚拟头结点
+        ListNode* dummyHead = new ListNode;
+        dummyHead->next = head;
+        ListNode* cur = dummyHead;
+        while(cur != NULL && cur->next !=NULL)
+        {
+            if ( cur->next->val == val)
+            {
+                ListNode* tmp = cur->next;
+                cur->next = cur->next->next;
+                delete tmp;
+            }else{
+                cur = cur->next;
+            }
+        }
+        //删除虚拟头结点
+        head = dummyHead->next;
+        delete dummyHead;
         return head;
     }
 };
