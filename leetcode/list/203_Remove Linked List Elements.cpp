@@ -37,7 +37,7 @@ public:
         ListNode* dummyHead = new ListNode;
         dummyHead->next = head;
         ListNode* cur = dummyHead;
-        while(cur != NULL && cur->next !=NULL)
+        while(cur->next !=NULL)
         {
             if ( cur->next->val == val)
             {
